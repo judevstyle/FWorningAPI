@@ -12,12 +12,12 @@ include_once('conn.php');
     where wt.status = 1
     "; 
 
-        $result=mysqli_query($conn,$sql);
+
+    $result=mysqli_query($conn,$sql);
         $data = array();
         $i=0;
         while($row = mysqli_fetch_assoc($result)) {
-
-
+            
             if (!isset($data[$row['wid']]) && $row['wid'] != null) {
 
                 $user = array(
@@ -45,7 +45,7 @@ include_once('conn.php');
                 $data[$row['wid']]['img'][] = array(
                     'seq' => $row['seq'],
                     'img' => $row['img_path'],
-                    'status' => $row['img_del'],
+                    'img_del' => $row['img_del'],
                 );
         
             }

@@ -17,38 +17,33 @@ $fname = (isset($input['fname'])) ? $input['fname'] : "0";
 $lname = (isset($input['lname'])) ? $input['lname'] : "0"; 
 $tel = (isset($input['tel'])) ? $input['tel'] : "0"; 
 $display_name = (isset($input['display_name'])) ? $input['display_name'] : "0";
-$avatar = (isset($input['u_avatar'])) ? $input['u_avatar'] : ""; 
+$avatar = (isset($input['avatar'])) ? $input['avatar'] : ""; 
 
 $image_name = time()."_IMG".".JPG";
 $img ="";
 $sql = "";
 
-if (strlen($avatar) > 255){
     
     $decodedImage = base64_decode("$avatar");
     $return = file_put_contents("profile/".$image_name, $decodedImage);
     $img = 'profile/'.$image_name;
 
-}else {
-    $image_name  = $avatar;  
-    $img = $image_name;
-}
 
 
-$sqlCk = "select count(*) as total from users where username = '$username' ";
+$sqlCk = "select count(*) as total from user_tb where username = '$username' ";
 $resultCk = mysqli_query($conn,$sqlCk);
 $dataCk = mysqli_fetch_assoc($resultCk);
 $uuid = gen_uuid();
-
+$pass = md5($password);
     if($dataCk['total'] > 0){
 
-        $data = array("status"=> 0 ,"msg" => "มี Username นี้แล้ว ","user"=>null);
+        $data = array("status"=> 0 ,"msg" => "มี Username มีการใช้งานแล้ว ","user"=>null);
         echo json_encode($data);
         exit();
 
     }else{
 
-        $sql = " insert into user_tb (uid,display_name,tel,gender,fname,lname,username,password,u_avatar)  values ('$uuid','$display_name','$tel','$gender','$fname','$lname','$username','$password','$img') ";
+        $sql = " insert into user_tb (uid,display_name,tel,gender,fname,lname,username,password,u_avatar,comp_id)  values ('$uuid','$display_name','$tel','$gender','$fname','$lname','$username','$pass','$img','1001') ";
     
     }
 
@@ -61,7 +56,9 @@ $dataUser = array(
     ,"lname" => $lname
     ,"gender" => $gender 
     ,"tel" => $tel
-    ,"u_avatar" => $img
+    ,"avatar" => $img
+    ,"comp_id" => '1001'
+
 );
 
 

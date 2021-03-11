@@ -6,8 +6,6 @@ $input = json_decode($inputJSON, TRUE);
 
 // $text = str_replace("'", "\'", $YourContent);
 $uid = (isset($input['uid'])) ? $input['uid'] : "11121"; 
-$username = (isset($input['username'])) ? $input['username'] : "11121"; 
-$password = (isset($input['password'])) ? $input['password'] : "111"; 
 $gender = (isset($input['gender'])) ? $input['gender'] : ""; 
 $fname = (isset($input['fname'])) ? $input['fname'] : "0"; 
 $lname = (isset($input['lname'])) ? $input['lname'] : "0"; 
@@ -41,7 +39,7 @@ $display_name_sql = mysqli_real_escape_string($conn,$display_name);
     $data;
 
     
-$dataUser = array(
+$dataUser = array( 
 
     "uid"=> $uid 
     ,"fname" => $fname 
