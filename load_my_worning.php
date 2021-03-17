@@ -3,13 +3,16 @@ date_default_timezone_set("Asia/Bangkok");
 include_once('conn.php');
 
 
+$uid = (isset($_GET['uid'])) ? $_GET['uid'] : ""; 
 
-    $sql = "select  wt.wid,wt.w_topic,wt.w_desc,wt.lat,wt.lng,date_create,ut.type,ut.u_avatar,ut.fname,ut.lname,ut.uid,ut.display_name,ut.tel
+
+
+    $sql = "select  wt.wid,wt.w_topic,wt.w_desc,wt.lat,wt.lng,date_create,ut.type,ut.u_avatar,ut.fname,ut.lname,ut.uid,ut.display_name
     ,   wi.seq,wi.img_path,wi.img_del
     from worning_tb wt
     left join  user_tb ut on ut.uid = wt.user_create
     left join worning_img_tb wi on wi.wid = wt.wid and wi.img_del = 0 
-    where wt.status = 0 "; 
+    where  user_create =  '$uid' "; 
 
     // echo $sql;
 // 
@@ -27,13 +30,10 @@ include_once('conn.php');
                     "lname" => $row['lname'],
                     "display_name" => $row['display_name'],
                     "avatar" => $row['u_avatar'],
-                    "tel" => $row['tel'],
                     "type" => $row['type']
-
                 );
         
                 $data[$row['wid']] =  array(
-                    'wid' => $row['wid'],
                     'w_topic' => $row['w_topic'],
                     'w_desc' => $row['w_desc'],
                     'lat' => $row['lat']+0,
@@ -56,6 +56,7 @@ include_once('conn.php');
         
             }
 
+            // $data[] =   $row ;
         }
 
 

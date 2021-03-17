@@ -20,7 +20,7 @@ $datetime = date("Y-m-d H:i:s");
     $sql = "insert into worning_tb (
         w_topic,w_desc,lat,lng,status,user_create,date_create,user_update,date_update,comp_id
         ) 
-        values ('$w_topic','$w_desc',$lat,$lng,1,'$uid','$datetime','$uid','$datetime','1001')";
+        values ('$w_topic','$w_desc',$lat,$lng,0,'$uid','$datetime','$uid','$datetime','1001')";
 
 
         // $data = array("status"=> 1 , "msg" => "".$sql);

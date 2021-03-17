@@ -30,7 +30,8 @@ include_once('conn.php');
                 "fname" => $row['u_fname'],
                 "lname" => $row['u_lname'],
                 "display_name" => $row['display_name'],
-                "avatar" => $row['avatar']
+                "avatar" => $row['avatar'],
+                "type" => $row['type']
             );
             $row['balance'] = $row['balance']+0.0;
             $row['sum_balance'] = $row['sum_balance']+0.0;

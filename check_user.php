@@ -2,8 +2,8 @@
 date_default_timezone_set("Asia/Bangkok");
 include_once('conn.php');
 
-    $username = (isset($_POST['username'])) ? $_POST['username'] : "Yywyw8190"; 
-    $password = (isset($_POST['password'])) ? $_POST['password'] : "111111s"; 
+    $username = (isset($_POST['username'])) ? $_POST['username'] : ""; 
+    $password = (isset($_POST['password'])) ? $_POST['password'] : ""; 
 
     $pass = md5($password);
 
@@ -24,6 +24,8 @@ include_once('conn.php');
                 ,"username" => $row['username']
                 ,"avatar" => $row['u_avatar']
                 ,"comp_id" => $row['comp_id']
+                ,"type_of_user" => $row['type_of_user']
+
 
             );
             

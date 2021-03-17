@@ -4,7 +4,7 @@ include_once('conn.php');
 
 
 
-    $sql = "select  wt.wid,wt.w_topic,wt.w_desc,wt.lat,wt.lng,date_create,ut.u_avatar,ut.fname,ut.lname,ut.uid,ut.display_name
+    $sql = "select  wt.wid,wt.w_topic,wt.w_desc,wt.lat,wt.lng,date_create,ut.type,ut.u_avatar,ut.fname,ut.lname,ut.uid,ut.display_name
     ,  wi.seq,wi.img_path,wi.img_del
     from worning_tb wt
     left join  user_tb ut on ut.uid = wt.user_create
@@ -25,7 +25,9 @@ include_once('conn.php');
                     "fname" => $row['fname'],
                     "lname" => $row['lname'],
                     "display_name" => $row['display_name'],
-                    "avatar" => $row['u_avatar']
+                    "avatar" => $row['u_avatar'],
+                    "type" => $row['type']
+
                 );
         
                 $data[$row['wid']] =  array(
