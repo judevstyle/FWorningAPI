@@ -6,7 +6,7 @@ include_once('conn.php');
 
     $sql = "select  * from check_in_tb ct
     left join  user_tb ut on ut.uid = ct.uid
-    where ct.status = 0 "; 
+    where ct.status = 1 "; 
 
     // echo $sql;
 // 

@@ -15,9 +15,14 @@ $password = (isset($input['password'])) ? $input['password'] : "111";
 $gender = (isset($input['gender'])) ? $input['gender'] : ""; 
 $fname = (isset($input['fname'])) ? $input['fname'] : "0"; 
 $lname = (isset($input['lname'])) ? $input['lname'] : "0"; 
+
 $tel = (isset($input['tel'])) ? $input['tel'] : "0"; 
 $display_name = (isset($input['display_name'])) ? $input['display_name'] : "0";
 $avatar = (isset($input['avatar'])) ? $input['avatar'] : ""; 
+
+$type = (isset($input['type'])) ? $input['type'] : "0"; 
+$type_of_user = (isset($input['type_of_user'])) ? $input['type_of_user'] : "0"; 
+
 
 $image_name = time()."_IMG".".JPG";
 $img ="";
@@ -43,7 +48,7 @@ $pass = md5($password);
 
     }else{
 
-        $sql = " insert into user_tb (uid,display_name,tel,gender,fname,lname,username,password,u_avatar,comp_id)  values ('$uuid','$display_name','$tel','$gender','$fname','$lname','$username','$pass','$img','1001') ";
+        $sql = " insert into user_tb (uid,display_name,tel,type,fname,lname,username,password,u_avatar,comp_id,type_of_user)  values ('$uuid','$display_name','$tel','$type','$fname','$lname','$username','$pass','$img','1001',$type_of_user) ";
     
     }
 
@@ -58,6 +63,8 @@ $dataUser = array(
     ,"tel" => $tel
     ,"avatar" => $img
     ,"comp_id" => '1001'
+    ,"type" => $type
+    ,"type_of_user" => $type_of_user
 
 );
 

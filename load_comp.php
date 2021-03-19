@@ -17,6 +17,8 @@ $result = mysqli_query($conn,$sql);
 
 $data = array();
 while($row = mysqli_fetch_assoc($result)) {
+
+    $row['distance'] = $row['distance']+0;
     $data= $row;
 }
 

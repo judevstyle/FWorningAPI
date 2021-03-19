@@ -4,9 +4,9 @@ include_once('conn.php');
 
 
 
-    $sql = "select  ut.* from user_tb ut
-    left join  check_in_tb ct on  ct.uid = ut.uid 
-    where ct.ckid is null  "; 
+    $sql = "select  * from check_in_tb ct
+    left join  user_tb ut on ut.uid = ct.uid
+    where ct.status = 0 "; 
 
     // echo $sql;
 // 
